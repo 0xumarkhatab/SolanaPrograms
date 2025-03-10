@@ -28,7 +28,9 @@ describe("hello-world",async () => {
     // Add your test here.
     const tx = await program.methods.initialize("Hello World").accounts({
       signer:signer.publicKey,
-      dataAccount:data_account.publicKey
+      dataAccount:data_account.publicKey,
+        systemProgram:anchor.web3.SystemProgram.programId,
+      
     }).signers([signer,data_account]).rpc();
     console.log("Your transaction signature", tx);
 

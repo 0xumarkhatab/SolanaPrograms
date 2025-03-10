@@ -1,6 +1,7 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { CpiA } from "../target/types/cpi_a";
+import { CpiB } from "../target/types/cpi_b";
 
 
 
@@ -9,6 +10,7 @@ describe("cpi-a",async () => {
   anchor.setProvider(anchor.AnchorProvider.env());
 
   const programA = anchor.workspace.cpi_a as Program<CpiA>;
+  const programB = anchor.workspace.cpi_b as Program<CpiB>;
 
   const signer = anchor.web3.Keypair.generate();
 
@@ -16,23 +18,24 @@ describe("cpi-a",async () => {
 
     const [pda_address,bump] = anchor.web3.PublicKey.findProgramAddressSync(
       [Buffer.from("superForgerer"),signer.publicKey.toBuffer()],
-      program.programId
+      programA.programId
     )
 
   // Airdrop 100 lamports to signer
-  let x =await program.provider.connection.requestAirdrop(pda_address,100*anchor.web3.LAMPORTS_PER_SOL)
+  let x =await programA.provider.connection.requestAirdrop(pda_address,100*anchor.web3.LAMPORTS_PER_SOL)
   console.log("airdrop tx is ",x);
-  await program.provider.connection.confirmTransaction(x,
+  await programA.provider.connection.confirmTransaction(x,
     "finalized"
   )  
   //////////////////////////////////////
   
 
     // Add your test here.
-    const tx = await program.methods.initialize().accounts({
+    const tx = await programA.methods.initialize().accounts({
       pdaAccount:pda_address,
       signer:signer.publicKey,
-      system_program:anchor.web3.SystemProgram.programId
+      systemProgram:anchor.web3.SystemProgram.programId,
+      cpiB:programB.programId
       
     }).signers([signer]).rpc();
     console.log("Your transaction signature", tx);

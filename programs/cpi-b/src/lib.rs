@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("13rLMW78wDBofP3jnJKoo7re8Hg95bEPjKBcHsR8bQpd");
+declare_id!("FAK8bTgJLwAXB272ofgn1VJWfaWTrAfQmsiDoFez5PD3");
 
 #[program]
 pub mod cpi_b {

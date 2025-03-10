@@ -4,7 +4,7 @@ use anchor_lang::prelude::*;
 use cpi_b::program::CpiB;
 use cpi_b::cpi::initialize;
 
-declare_id!("9JDzuztBjdYuZLeovgUhnbBLaudDQiTJ5wsePgR2zwXG");
+declare_id!("EmN7bh9JyNB9PPDYKt17uvM7W74hT25nFdoGyYFFj9zE");
 
 #[program]
 pub mod cpi_a {
