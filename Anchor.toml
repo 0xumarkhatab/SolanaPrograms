@@ -1,10 +1,12 @@
 [toolchain]
 
 [features]
-resolution = true
+resolution = false
 skip-lint = false
 
 [programs.localnet]
+cpi-a = "9JDzuztBjdYuZLeovgUhnbBLaudDQiTJ5wsePgR2zwXG"
+cpi-b = "13rLMW78wDBofP3jnJKoo7re8Hg95bEPjKBcHsR8bQpd"
 hello_world = "2WikA6pqg8yDnmZfkPV1NBnJxGBSH7bFoVkHgZfPS9a6"
 
 [registry]
