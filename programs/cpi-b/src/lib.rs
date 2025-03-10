@@ -14,5 +14,6 @@ pub mod cpi_b {
 
 #[derive(Accounts)]
 pub struct Initialize<'a> {
-    pub signer: Signer<'a>
+    pub pda_account: Signer<'a>
 }
+

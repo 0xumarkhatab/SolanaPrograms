@@ -8,7 +8,8 @@ describe("cpi-a",async () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
 
-  const program = anchor.workspace.cpi_a as Program<CpiA>;
+  const programA = anchor.workspace.cpi_a as Program<CpiA>;
+
   const signer = anchor.web3.Keypair.generate();
 
   it("Is initialized!", async () => {
